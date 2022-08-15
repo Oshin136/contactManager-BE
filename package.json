@@ -8,7 +8,10 @@
     "build": "tsc",
     "lint:fix": "tslint --fix -c tslint.json 'src/**/*.{ts,js}' 'test/**/*.{ts,js}'",
     "prettify": "prettier --single-quote --print-width 120 --write {src,test}/**/*.ts",
-    "format:code": "run-s lint:fix prettify"
+    "format:code": "run-s lint:fix prettify",
+    "migrate:make": "knex migrate:make --migrations-directory src/db/migrations",
+    "migrate": "knex migrate:latest --knexfile src/db/knexfile.ts",
+    "rollback": "knex migrate:rollback --knexfile src/db/knexfile.ts"
   },
   "keywords": [
     "typescript",
@@ -30,11 +33,16 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/jsonwebtoken": "^8.5.8",
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "http-status-codes": "^2.2.0",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^2.2.0",
+    "pg": "^8.7.3",
     "winston": "^3.8.1"
   }
 }
