@@ -10,8 +10,11 @@ const router = Router();
 
 router.use('/register',userController.createUser);
 router.use('/login',loginRoutes);
+
 router.use(authenticate);
+
 router.use('/users', userRoutes);
 router.use('/contacts',contactRoutes);
+
 
 export default router;

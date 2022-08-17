@@ -4,7 +4,8 @@ import * as contactService from "../services/contactService";
 
 
 export const getAllContacts = (req:Request,res:Response,next:NextFunction)=>{
-    contactService.getAllContacts()
+  const {id}  = req.body;
+    contactService.getAllContacts(+id)
     .then(data => res.json(data))
     .catch(err => next(err))
 }
